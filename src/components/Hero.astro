@@ -1,0 +1,610 @@
+---
+import HeroScene from "./three/HeroScene";
+---
+
+<section class="hero" id="top">
+
+  <!-- 3D BACKGROUND -->
+  <div class="hero-canvas">
+    <HeroScene client:load />
+  </div>
+
+  <!-- HERO CONTENT -->
+  <div class="hero-content">
+
+    <div class="hero-kicker">
+      DIGITAL TECHNOLOGY STUDIO
+    </div>
+
+    <h1 class="hero-title">
+      <span>WE</span>
+      <span>ENGINEER</span>
+      <span>DIGITAL</span>
+      <span class="muted">EXPERIENCES.</span>
+    </h1>
+
+    <p class="hero-description">
+      HEPTA builds modern software, intelligent systems,
+      and digital experiences for ambitious businesses.
+    </p>
+
+  </div>
+
+  <!-- BOTTOM INFORMATION -->
+  <div class="hero-bottom">
+
+    <div class="hero-scroll">
+      <span class="scroll-line"></span>
+
+      <div class="scroll-text">
+        <span>SCROLL TO EXPLORE</span>
+        <span class="scroll-arrow">↓</span>
+      </div>
+    </div>
+
+    <div class="hero-year">
+      2026
+    </div>
+
+  </div>
+
+</section>
+
+
+<style>
+
+  /* =========================================
+     HERO
+  ========================================== */
+
+  .hero {
+
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    min-height: 700px;
+
+    overflow: hidden;
+
+    background:
+      radial-gradient(
+        circle at 72% 45%,
+        rgba(255,255,255,0.035),
+        transparent 32%
+      ),
+      #050505;
+
+    color: #ffffff;
+
+  }
+
+
+  /* =========================================
+     3D CANVAS
+  ========================================== */
+
+  .hero-canvas {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+  }
+
+
+  .hero-canvas :global(canvas) {
+
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block;
+
+  }
+
+
+  /* =========================================
+     HERO CONTENT
+  ========================================== */
+
+  .hero-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(720px, 48vw);
+
+    margin-left: clamp(
+      60px,
+      6.5vw,
+      130px
+    );
+
+    padding-top: clamp(
+      100px,
+      15vh,
+      160px
+    );
+
+  }
+
+
+  /* =========================================
+     KICKER
+  ========================================== */
+
+  .hero-kicker {
+
+    margin-bottom: 28px;
+
+    font-size: 9px;
+
+    line-height: 1;
+
+    letter-spacing: 0.22em;
+
+    font-weight: 500;
+
+    color: rgba(255,255,255,0.45);
+
+  }
+
+
+  /* =========================================
+     TITLE
+  ========================================== */
+
+  .hero-title {
+
+    margin: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    font-size: clamp(
+      64px,
+      7.2vw,
+      138px
+    );
+
+    font-weight: 400;
+
+    line-height: 0.82;
+
+    letter-spacing: -0.065em;
+
+    text-transform: uppercase;
+
+  }
+
+
+  .hero-title span {
+
+    display: block;
+
+    white-space: nowrap;
+
+  }
+
+
+  .hero-title .muted {
+
+    color: rgba(
+      255,
+      255,
+      255,
+      0.25
+    );
+
+  }
+
+
+  /* =========================================
+     DESCRIPTION
+  ========================================== */
+
+  .hero-description {
+
+    width: min(
+      420px,
+      100%
+    );
+
+    margin:
+
+      42px
+
+      0
+
+      0;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+    letter-spacing: 0.025em;
+
+    color: rgba(
+      255,
+      255,
+      255,
+      0.48
+    );
+
+  }
+
+
+  /* =========================================
+     BOTTOM
+  ========================================== */
+
+  .hero-bottom {
+
+    position: absolute;
+
+    left: clamp(
+      60px,
+      6.5vw,
+      130px
+    );
+
+    right: clamp(
+      60px,
+      6.5vw,
+      130px
+    );
+
+    bottom: 30px;
+
+    z-index: 5;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+  }
+
+
+  /* =========================================
+     SCROLL
+  ========================================== */
+
+  .hero-scroll {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+  }
+
+
+  .scroll-line {
+
+    display: block;
+
+    width: 42px;
+
+    height: 1px;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.4
+      );
+
+  }
+
+
+  .scroll-text {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    font-size: 8px;
+
+    line-height: 1;
+
+    letter-spacing: 0.16em;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.4
+      );
+
+  }
+
+
+  .scroll-arrow {
+
+    font-size: 13px;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.65
+      );
+
+    animation:
+      scrollArrow 2s
+      ease-in-out
+      infinite;
+
+  }
+
+
+  @keyframes scrollArrow {
+
+    0%,
+    100% {
+      transform:
+        translateY(0);
+    }
+
+    50% {
+      transform:
+        translateY(5px);
+    }
+
+  }
+
+
+  /* =========================================
+     YEAR
+  ========================================== */
+
+  .hero-year {
+
+    font-size: 8px;
+
+    letter-spacing: 0.16em;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.35
+      );
+
+  }
+
+
+  /* =========================================
+     CENTER DIVIDER
+  ========================================== */
+
+  .hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 0;
+
+    height: 1px;
+
+    z-index: 6;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.09
+      );
+
+  }
+
+
+  /* =========================================
+     TABLET
+  ========================================== */
+
+  @media (max-width: 1100px) {
+
+    .hero-content {
+
+      width: 55vw;
+
+    }
+
+    .hero-title {
+
+      font-size:
+        clamp(
+          58px,
+          7.5vw,
+          100px
+        );
+
+    }
+
+  }
+
+
+  /* =========================================
+     MOBILE
+  ========================================== */
+
+  @media (max-width: 768px) {
+
+    .hero {
+
+      min-height: 720px;
+
+    }
+
+
+    .hero-content {
+
+      width:
+        calc(
+          100% - 40px
+        );
+
+      margin-left: 20px;
+
+      padding-top: 120px;
+
+    }
+
+
+    .hero-kicker {
+
+      margin-bottom: 24px;
+
+      font-size: 8px;
+
+    }
+
+
+    .hero-title {
+
+      font-size:
+        clamp(
+          52px,
+          15vw,
+          82px
+        );
+
+      line-height: 0.86;
+
+      letter-spacing:
+        -0.065em;
+
+    }
+
+
+    .hero-title span {
+
+      white-space: normal;
+
+    }
+
+
+    .hero-description {
+
+      width:
+        min(
+          310px,
+          90%
+        );
+
+      margin-top: 30px;
+
+      font-size: 10px;
+
+      line-height: 1.65;
+
+    }
+
+
+    .hero-bottom {
+
+      left: 20px;
+
+      right: 20px;
+
+      bottom: 24px;
+
+    }
+
+
+    .scroll-line {
+
+      width: 25px;
+
+    }
+
+
+    .scroll-text {
+
+      font-size: 7px;
+
+      letter-spacing:
+        0.12em;
+
+    }
+
+
+    .hero-year {
+
+      font-size: 7px;
+
+    }
+
+  }
+
+
+  /* =========================================
+     SMALL MOBILE
+  ========================================== */
+
+  @media (max-width: 480px) {
+
+    .hero-content {
+
+      padding-top: 115px;
+
+    }
+
+
+    .hero-title {
+
+      font-size: 16vw;
+
+    }
+
+
+    .hero-description {
+
+      margin-top: 26px;
+
+    }
+
+  }
+
+
+  /* =========================================
+     REDUCED MOTION
+  ========================================== */
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .scroll-arrow {
+
+      animation: none;
+
+    }
+
+  }
+
+</style>

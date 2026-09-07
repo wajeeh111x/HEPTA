@@ -1,0 +1,1516 @@
+---
+const services = [
+  {
+    number: "01",
+    title: "SOFTWARE",
+    description:
+      "Scalable digital systems, web applications and business platforms engineered around real-world needs.",
+    tags: "WEB · BACKEND · CLOUD",
+  },
+  {
+    number: "02",
+    title: "ARTIFICIAL INTELLIGENCE",
+    description:
+      "Intelligent products and AI-powered workflows that automate operations and turn data into useful decisions.",
+    tags: "AI · LLM · AUTOMATION",
+  },
+  {
+    number: "03",
+    title: "DIGITAL EXPERIENCES",
+    description:
+      "Immersive websites and interactive digital experiences designed to make brands impossible to ignore.",
+    tags: "WEB · INTERACTION · UX",
+  },
+  {
+    number: "04",
+    title: "3D / WEBGL",
+    description:
+      "Real-time 3D environments, WebGL experiences and visual systems built for the modern web.",
+    tags: "THREE.JS · WEBGL · 3D",
+  },
+  {
+    number: "05",
+    title: "PRODUCT DESIGN",
+    description:
+      "Thoughtful interfaces and product experiences that connect beautiful design with powerful technology.",
+    tags: "UI · UX · PRODUCT",
+  },
+];
+---
+
+<section class="services" id="services">
+
+  <!-- =========================================
+       HEADER
+  ========================================== -->
+
+  <div class="services-header">
+    <span>01</span>
+    <span>WHAT WE DO</span>
+    <span>HEPTA</span>
+    <span>SERVICES</span>
+  </div>
+
+
+  <!-- =========================================
+       INTRO
+  ========================================== -->
+
+  <div class="services-intro">
+
+    <div class="intro-label">
+      DIGITAL SYSTEMS.
+    </div>
+
+
+    <!-- 3D REVOLVING TITLE -->
+
+    <div class="title-perspective">
+
+      <h2 class="revolving-title">
+
+        <span
+          class="revolve-word"
+          data-revolve-word
+        >
+          ENGINEERING
+        </span>
+
+        <span
+          class="revolve-word muted"
+          data-revolve-word
+        >
+          WHAT'S
+        </span>
+
+        <span
+          class="revolve-word"
+          data-revolve-word
+        >
+          NEXT.
+        </span>
+
+      </h2>
+
+    </div>
+
+
+    <p>
+      We combine software engineering,
+      artificial intelligence and creative
+      technology to build digital products
+      for ambitious businesses.
+    </p>
+
+  </div>
+
+
+  <!-- =========================================
+       SERVICES LIST
+  ========================================== -->
+
+  <div class="services-list">
+
+    {
+      services.map((service, index) => (
+        <div
+          class="service-row"
+          data-service
+          data-index={index}
+        >
+
+          <div class="service-bg-number">
+            {service.number}
+          </div>
+
+
+          <div class="service-number">
+            {service.number}
+          </div>
+
+
+          <div class="service-main">
+
+            <h3>
+              {service.title}
+            </h3>
+
+            <p>
+              {service.description}
+            </p>
+
+            <span class="service-tags">
+              {service.tags}
+            </span>
+
+          </div>
+
+
+          <div class="service-arrow">
+            <span>↗</span>
+          </div>
+
+
+          <div class="service-hover-line"></div>
+
+        </div>
+      ))
+    }
+
+  </div>
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <div class="services-footer">
+
+    <div class="footer-left">
+      ENGINEERING × DESIGN × INTELLIGENCE
+    </div>
+
+    <div class="footer-right">
+      <span>05</span>
+      <span>SERVICES</span>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initServices = () => {
+    const section = document.querySelector(".services");
+
+    if (!section) return;
+
+    const header = section.querySelector(".services-header");
+    const intro = section.querySelector(".services-intro");
+    const title = section.querySelector(".revolving-title");
+    const words = section.querySelectorAll("[data-revolve-word]");
+    const rows = section.querySelectorAll("[data-service]");
+    const footer = section.querySelector(".services-footer");
+
+    /* =========================================
+       HEADER
+    ========================================== */
+
+    if (header) {
+      gsap.fromTo(
+        header,
+        {
+          y: 30,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 0.45,
+          duration: 0.9,
+          ease: "power3.out",
+
+          scrollTrigger: {
+            trigger: header,
+            start: "top 88%",
+            once: true,
+          },
+        }
+      );
+    }
+
+    /* =========================================
+       3D REVOLVING TITLE
+    ========================================== */
+
+    if (title && words.length) {
+      /*
+       * Make sure the title is visible.
+       */
+      gsap.set(title, {
+        transformPerspective: 1600,
+        transformStyle: "preserve-3d",
+        transformOrigin: "50% 50%",
+        opacity: 1,
+      });
+
+      gsap.set(words, {
+        transformPerspective: 1600,
+        transformStyle: "preserve-3d",
+        transformOrigin: "50% 50%",
+        opacity: 1,
+      });
+
+      /*
+       * Initial 3D position.
+       */
+      gsap.set(words, {
+        y: 100,
+        z: -300,
+        rotationX: 70,
+        rotationY: -25,
+      });
+
+      /*
+       * Entrance animation.
+       */
+      const entrance = gsap.timeline({
+        scrollTrigger: {
+          trigger: title,
+          start: "top 82%",
+          once: true,
+        },
+      });
+
+      words.forEach((word, index) => {
+        entrance.to(
+          word,
+          {
+            y: 0,
+            z: 0,
+            rotationX: 0,
+            rotationY: 0,
+            opacity: 1,
+
+            duration: 1.2,
+            ease: "power4.out",
+          },
+          index * 0.15
+        );
+      });
+
+      /*
+       * ========================================
+       * REAL 3D REVOLUTION
+       * ========================================
+       *
+       * The entire title rotates continuously
+       * according to scroll position.
+       */
+
+      const scrollState = {
+        rotation: 0,
+      };
+
+      ScrollTrigger.create({
+        trigger: section,
+
+        start: "top bottom",
+        end: "bottom top",
+
+        scrub: 1.2,
+
+        onUpdate: (self) => {
+          const progress = self.progress;
+
+          /*
+           * Multiple complete revolutions.
+           */
+          scrollState.rotation =
+            progress * Math.PI * 4;
+
+          const rotation =
+            scrollState.rotation;
+
+          /*
+           * Main title rotation.
+           */
+          gsap.set(title, {
+            rotationY:
+              Math.sin(rotation) * 18,
+
+            rotationX:
+              Math.cos(rotation) * 12,
+
+            rotationZ:
+              Math.sin(rotation * 0.5) * 3,
+          });
+
+          /*
+           * Each word moves slightly differently
+           * to create depth.
+           */
+          words.forEach((word, index) => {
+            const offset =
+              index * 0.7;
+
+            const localRotation =
+              rotation + offset;
+
+            gsap.set(word, {
+              z:
+                Math.sin(localRotation) *
+                100,
+
+              rotationY:
+                Math.sin(localRotation) *
+                18,
+
+              rotationX:
+                Math.cos(localRotation) *
+                10,
+
+              y:
+                Math.sin(localRotation) *
+                -12,
+            });
+          });
+        },
+      });
+
+      /*
+       * ========================================
+       * MOUSE 3D PARALLAX
+       * ========================================
+       */
+
+      let mouseX = 0;
+      let mouseY = 0;
+
+      title.addEventListener("mousemove", (event) => {
+        const rect =
+          title.getBoundingClientRect();
+
+        mouseX =
+          (event.clientX - rect.left) /
+            rect.width -
+          0.5;
+
+        mouseY =
+          (event.clientY - rect.top) /
+            rect.height -
+          0.5;
+      });
+
+      title.addEventListener("mouseleave", () => {
+        mouseX = 0;
+        mouseY = 0;
+      });
+
+      /*
+       * Smooth mouse movement.
+       */
+      const mouseAnimation = {
+        x: 0,
+        y: 0,
+      };
+
+      gsap.ticker.add(() => {
+        mouseAnimation.x +=
+          (mouseX * 12 -
+            mouseAnimation.x) *
+          0.08;
+
+        mouseAnimation.y +=
+          (mouseY * -10 -
+            mouseAnimation.y) *
+          0.08;
+
+        /*
+         * Mouse adds a subtle layer
+         * on top of the scroll animation.
+         */
+        gsap.set(title, {
+          x:
+            mouseAnimation.x * 0.4,
+
+          y:
+            mouseAnimation.y * 0.4,
+        });
+      });
+    }
+
+    /* =========================================
+       DESCRIPTION
+    ========================================== */
+
+    if (intro) {
+      const paragraph =
+        intro.querySelector("p");
+
+      if (paragraph) {
+        gsap.fromTo(
+          paragraph,
+          {
+            y: 40,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 0.45,
+
+            duration: 1,
+            delay: 0.3,
+
+            ease: "power4.out",
+
+            scrollTrigger: {
+              trigger: intro,
+              start: "top 78%",
+              once: true,
+            },
+          }
+        );
+      }
+    }
+
+    /* =========================================
+       SERVICE ROWS
+    ========================================== */
+
+    if (rows.length) {
+      gsap.fromTo(
+        rows,
+        {
+          y: 80,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+
+          duration: 0.9,
+          stagger: 0.1,
+
+          ease: "power4.out",
+
+          scrollTrigger: {
+            trigger:
+              section.querySelector(
+                ".services-list"
+              ),
+
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      /* =======================================
+         ROW INTERACTION
+      ======================================== */
+
+      rows.forEach((row) => {
+        const serviceTitle =
+          row.querySelector("h3");
+
+        const description =
+          row.querySelector("p");
+
+        const arrow =
+          row.querySelector(
+            ".service-arrow"
+          );
+
+        const bgNumber =
+          row.querySelector(
+            ".service-bg-number"
+          );
+
+        const hoverLine =
+          row.querySelector(
+            ".service-hover-line"
+          );
+
+        row.addEventListener(
+          "mouseenter",
+          () => {
+            row.classList.add(
+              "is-hovered"
+            );
+
+            if (serviceTitle) {
+              gsap.to(
+                serviceTitle,
+                {
+                  x: 25,
+                  duration: 0.55,
+                  ease: "power3.out",
+                }
+              );
+            }
+
+            if (description) {
+              gsap.to(
+                description,
+                {
+                  x: 25,
+                  opacity: 0.75,
+                  duration: 0.55,
+                  ease: "power3.out",
+                }
+              );
+            }
+
+            if (arrow) {
+              gsap.to(
+                arrow,
+                {
+                  rotation: 45,
+                  scale: 1.12,
+                  duration: 0.5,
+                  ease: "power3.out",
+                }
+              );
+            }
+
+            if (bgNumber) {
+              gsap.to(
+                bgNumber,
+                {
+                  x: 25,
+                  opacity: 0.055,
+                  duration: 0.8,
+                  ease: "power3.out",
+                }
+              );
+            }
+
+            if (hoverLine) {
+              gsap.to(
+                hoverLine,
+                {
+                  scaleX: 1,
+                  duration: 0.7,
+                  ease: "power4.out",
+                }
+              );
+            }
+          }
+        );
+
+        row.addEventListener(
+          "mouseleave",
+          () => {
+            row.classList.remove(
+              "is-hovered"
+            );
+
+            if (serviceTitle) {
+              gsap.to(
+                serviceTitle,
+                {
+                  x: 0,
+                  duration: 0.5,
+                  ease: "power3.out",
+                }
+              );
+            }
+
+            if (description) {
+              gsap.to(
+                description,
+                {
+                  x: 0,
+                  opacity: 0.4,
+                  duration: 0.5,
+                  ease: "power3.out",
+                }
+              );
+            }
+
+            if (arrow) {
+              gsap.to(
+                arrow,
+                {
+                  rotation: 0,
+                  scale: 1,
+                  duration: 0.5,
+                  ease: "power3.out",
+                }
+              );
+            }
+
+            if (bgNumber) {
+              gsap.to(
+                bgNumber,
+                {
+                  x: 0,
+                  opacity: 0.025,
+                  duration: 0.7,
+                  ease: "power3.out",
+                }
+              );
+            }
+
+            if (hoverLine) {
+              gsap.to(
+                hoverLine,
+                {
+                  scaleX: 0,
+                  duration: 0.5,
+                  ease: "power3.out",
+                }
+              );
+            }
+          }
+        );
+
+        row.addEventListener(
+          "mousemove",
+          (event) => {
+            if (!arrow) return;
+
+            const rect =
+              row.getBoundingClientRect();
+
+            const x =
+              event.clientX -
+              rect.left -
+              rect.width / 2;
+
+            const y =
+              event.clientY -
+              rect.top -
+              rect.height / 2;
+
+            gsap.to(
+              arrow,
+              {
+                x: x * 0.08,
+                y: y * 0.08,
+
+                duration: 0.4,
+                ease: "power2.out",
+              }
+            );
+          }
+        );
+      });
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================== */
+
+    if (footer) {
+      gsap.fromTo(
+        footer,
+        {
+          y: 30,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 0.35,
+
+          duration: 0.8,
+
+          ease: "power3.out",
+
+          scrollTrigger: {
+            trigger: footer,
+            start: "top 90%",
+            once: true,
+          },
+        }
+      );
+    }
+
+    ScrollTrigger.refresh();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initServices,
+      { once: true }
+    );
+  } else {
+    initServices();
+  }
+</script>
+
+
+<style>
+  /* =========================================
+     BASE
+  ========================================== */
+
+  .services {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+      130px 7vw
+      90px;
+
+    background:
+      #050505;
+
+    color:
+      white;
+
+    overflow:
+      hidden;
+
+    border-top:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.1
+      );
+  }
+
+
+  /* =========================================
+     HEADER
+  ========================================== */
+
+  .services-header {
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr 1fr 1fr 1fr;
+
+    padding-bottom:
+      30px;
+
+    border-bottom:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.12
+      );
+
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.2em;
+
+    opacity:
+      0.45;
+  }
+
+
+  .services-header span:nth-child(3),
+  .services-header span:nth-child(4) {
+    text-align:
+      right;
+  }
+
+
+  /* =========================================
+     INTRO
+  ========================================== */
+
+  .services-intro {
+    position:
+      relative;
+
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr 2fr;
+
+    gap:
+      40px;
+
+    padding:
+      110px 0
+      140px;
+  }
+
+
+  .intro-label {
+    align-self:
+      start;
+
+    padding-top:
+      12px;
+
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.2em;
+
+    opacity:
+      0.35;
+  }
+
+
+  /* =========================================
+     3D TITLE
+  ========================================== */
+
+  .title-perspective {
+    grid-column:
+      2;
+
+    perspective:
+      1400px;
+
+    perspective-origin:
+      50% 50%;
+
+    overflow:
+      visible;
+  }
+
+
+  .revolving-title {
+    position:
+      relative;
+
+    margin:
+      0;
+
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    transform-style:
+      preserve-3d;
+
+    transform:
+      translateZ(0);
+
+    font-size:
+      clamp(
+        65px,
+        10vw,
+        165px
+      );
+
+    line-height:
+      0.8;
+
+    letter-spacing:
+      -0.08em;
+
+    font-weight:
+      500;
+
+    will-change:
+      transform;
+  }
+
+
+  .revolve-word {
+    display:
+      block;
+
+    position:
+      relative;
+
+    transform-style:
+      preserve-3d;
+
+    transform-origin:
+      center center;
+
+    backface-visibility:
+      hidden;
+
+    will-change:
+      transform,
+      opacity;
+
+    cursor:
+      default;
+  }
+
+
+  .revolve-word.muted {
+    opacity:
+      0.2;
+  }
+
+
+  /* =========================================
+     DESCRIPTION
+  ========================================== */
+
+  .services-intro p {
+    grid-column:
+      2;
+
+    width:
+      min(
+        440px,
+        80%
+      );
+
+    margin:
+      20px 0 0;
+
+    font-size:
+      12px;
+
+    line-height:
+      1.8;
+
+    opacity:
+      0.45;
+  }
+
+
+  /* =========================================
+     SERVICE LIST
+  ========================================== */
+
+  .services-list {
+    position:
+      relative;
+
+    border-top:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.18
+      );
+  }
+
+
+  /* =========================================
+     SERVICE ROW
+  ========================================== */
+
+  .service-row {
+    position:
+      relative;
+
+    display:
+      grid;
+
+    grid-template-columns:
+      100px
+      1fr
+      100px;
+
+    align-items:
+      center;
+
+    min-height:
+      170px;
+
+    border-bottom:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.12
+      );
+
+    overflow:
+      hidden;
+
+    cursor:
+      pointer;
+
+    isolation:
+      isolate;
+  }
+
+
+  /* =========================================
+     BACKGROUND NUMBER
+  ========================================== */
+
+  .service-bg-number {
+    position:
+      absolute;
+
+    left:
+      5%;
+
+    top:
+      50%;
+
+    transform:
+      translateY(-50%);
+
+    font-size:
+      clamp(
+        150px,
+        20vw,
+        330px
+      );
+
+    line-height:
+      1;
+
+    letter-spacing:
+      -0.1em;
+
+    font-weight:
+      700;
+
+    opacity:
+      0.025;
+
+    pointer-events:
+      none;
+
+    z-index:
+      -1;
+
+    will-change:
+      transform;
+  }
+
+
+  /* =========================================
+     NUMBER
+  ========================================== */
+
+  .service-number {
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.15em;
+
+    opacity:
+      0.35;
+  }
+
+
+  /* =========================================
+     MAIN
+  ========================================== */
+
+  .service-main {
+    position:
+      relative;
+
+    padding:
+      35px 0;
+  }
+
+
+  .service-main h3 {
+    margin:
+      0;
+
+    font-size:
+      clamp(
+        38px,
+        5vw,
+        76px
+      );
+
+    line-height:
+      0.9;
+
+    letter-spacing:
+      -0.06em;
+
+    font-weight:
+      400;
+
+    will-change:
+      transform;
+  }
+
+
+  .service-main p {
+    width:
+      min(
+        450px,
+        75%
+      );
+
+    margin:
+      15px 0 0;
+
+    font-size:
+      10px;
+
+    line-height:
+      1.65;
+
+    opacity:
+      0.4;
+
+    will-change:
+      transform;
+  }
+
+
+  .service-tags {
+    display:
+      block;
+
+    margin-top:
+      18px;
+
+    font-size:
+      8px;
+
+    letter-spacing:
+      0.15em;
+
+    opacity:
+      0.25;
+  }
+
+
+  /* =========================================
+     ARROW
+  ========================================== */
+
+  .service-arrow {
+    justify-self:
+      end;
+
+    width:
+      58px;
+
+    height:
+      58px;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.25
+      );
+
+    border-radius:
+      50%;
+
+    font-size:
+      20px;
+
+    will-change:
+      transform;
+  }
+
+
+  /* =========================================
+     HOVER LINE
+  ========================================== */
+
+  .service-hover-line {
+    position:
+      absolute;
+
+    left:
+      0;
+
+    bottom:
+      0;
+
+    width:
+      100%;
+
+    height:
+      2px;
+
+    background:
+      white;
+
+    transform:
+      scaleX(0);
+
+    transform-origin:
+      left;
+
+    z-index:
+      5;
+
+    pointer-events:
+      none;
+  }
+
+
+  /* =========================================
+     HOVER BACKGROUND
+  ========================================== */
+
+  .service-row::before {
+    content:
+      "";
+
+    position:
+      absolute;
+
+    inset:
+      0;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.025
+      );
+
+    transform:
+      scaleY(0);
+
+    transform-origin:
+      bottom;
+
+    transition:
+      transform
+      0.6s
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      );
+
+    z-index:
+      -1;
+  }
+
+
+  .service-row:hover::before {
+    transform:
+      scaleY(1);
+  }
+
+
+  /* =========================================
+     FOOTER
+  ========================================== */
+
+  .services-footer {
+    display:
+      flex;
+
+    justify-content:
+      space-between;
+
+    align-items:
+      center;
+
+    padding-top:
+      30px;
+
+    font-size:
+      8px;
+
+    letter-spacing:
+      0.17em;
+
+    opacity:
+      0.35;
+  }
+
+
+  .footer-right {
+    display:
+      flex;
+
+    gap:
+      15px;
+  }
+
+
+  /* =========================================
+     MOBILE
+  ========================================== */
+
+  @media (max-width: 768px) {
+
+    .services {
+      padding:
+        100px 25px
+        70px;
+    }
+
+
+    .services-header {
+      grid-template-columns:
+        1fr 1fr;
+    }
+
+
+    .services-header span:nth-child(3) {
+      display:
+        none;
+    }
+
+
+    .services-header span:nth-child(4) {
+      text-align:
+        right;
+    }
+
+
+    .services-intro {
+      display:
+        block;
+
+      padding:
+        80px 0
+        90px;
+    }
+
+
+    .intro-label {
+      margin-bottom:
+        30px;
+    }
+
+
+    .title-perspective {
+      width:
+        100%;
+    }
+
+
+    .revolving-title {
+      font-size:
+        clamp(
+          58px,
+          16vw,
+          100px
+        );
+
+      perspective:
+        900px;
+    }
+
+
+    .services-intro p {
+      width:
+        90%;
+
+      margin-top:
+        35px;
+
+      font-size:
+        11px;
+    }
+
+
+    .service-row {
+      grid-template-columns:
+        45px
+        1fr
+        50px;
+
+      min-height:
+        150px;
+    }
+
+
+    .service-number {
+      font-size:
+        8px;
+    }
+
+
+    .service-main {
+      padding:
+        30px 0;
+    }
+
+
+    .service-main h3 {
+      font-size:
+        clamp(
+          30px,
+          8vw,
+          48px
+        );
+    }
+
+
+    .service-main p {
+      width:
+        95%;
+
+      font-size:
+        9px;
+    }
+
+
+    .service-tags {
+      font-size:
+        7px;
+    }
+
+
+    .service-arrow {
+      width:
+        42px;
+
+      height:
+        42px;
+
+      font-size:
+        15px;
+    }
+
+
+    .service-bg-number {
+      font-size:
+        160px;
+    }
+
+
+    .services-footer {
+      display:
+        block;
+
+      line-height:
+        2;
+    }
+
+
+    .footer-right {
+      margin-top:
+        15px;
+    }
+
+  }
+
+
+  /* =========================================
+     REDUCED MOTION
+  ========================================== */
+
+  @media (
+    prefers-reduced-motion: reduce
+  ) {
+
+    .service-row::before {
+      transition:
+        none;
+    }
+
+    .revolve-word {
+      transform:
+        none !important;
+    }
+
+  }
+</style>

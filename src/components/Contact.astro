@@ -1,0 +1,1441 @@
+---
+---
+
+<section class="contact" id="contact">
+
+  <!-- =========================================
+       HEADER
+  ========================================== -->
+
+  <div class="contact-header">
+
+    <span>04</span>
+
+    <span>START A PROJECT</span>
+
+    <span>HEPTA / 2026</span>
+
+  </div>
+
+
+  <!-- =========================================
+       MAIN CTA
+  ========================================== -->
+
+  <div class="contact-main">
+
+    <div class="contact-label">
+
+      <span class="label-line"></span>
+
+      <span>HAVE AN IDEA?</span>
+
+    </div>
+
+
+    <h2 class="contact-title">
+
+      <span class="contact-line">
+        LET'S BUILD
+      </span>
+
+      <span class="contact-line muted">
+        SOMETHING
+      </span>
+
+      <span class="contact-line">
+        <em>EXTRAORDINARY.</em>
+      </span>
+
+    </h2>
+
+
+    <p class="contact-intro">
+      Tell us what you're building,
+      and let's turn the idea into
+      something real.
+    </p>
+
+  </div>
+
+
+  <!-- =========================================
+       CTA
+  ========================================== -->
+
+  <div class="contact-action">
+
+    <a
+      href="mailto:hello@heptasoftwaresolutions.com"
+      class="email-link"
+    >
+
+      <span class="email-label">
+        START A CONVERSATION
+      </span>
+
+      <span class="email">
+        hello@heptasoftwaresolutions.com
+      </span>
+
+      <span class="email-arrow">
+        ↗
+      </span>
+
+    </a>
+
+  </div>
+
+
+  <!-- =========================================
+       SERVICES
+  ========================================== -->
+
+  <div class="contact-services">
+
+    <div class="services-heading">
+      <span>WHAT WE DO</span>
+    </div>
+
+
+    <div class="service-list">
+
+      <span>SOFTWARE</span>
+
+      <span>AI / AUTOMATION</span>
+
+      <span>WEB DEVELOPMENT</span>
+
+      <span>UI / UX</span>
+
+      <span>3D / WEBGL</span>
+
+      <span>DIGITAL PRODUCTS</span>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       FINAL STATEMENT
+  ========================================== -->
+
+  <div class="contact-final">
+
+    <div class="final-line"></div>
+
+    <div class="final-content">
+
+      <span>HEPTA</span>
+
+      <p>
+        BUILDING DIGITAL
+        <strong>FUTURES.</strong>
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer class="contact-footer">
+
+    <div>
+      © 2026 HEPTA SOFTWARE SOLUTIONS
+    </div>
+
+    <div>
+      PAKISTAN
+    </div>
+
+    <div>
+      <a href="#top">
+        BACK TO TOP ↑
+      </a>
+    </div>
+
+  </footer>
+
+</section>
+
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+
+  const initContact = () => {
+
+    const section =
+      document.querySelector(".contact");
+
+    if (!section) return;
+
+
+    const lines =
+      section.querySelectorAll(
+        ".contact-line"
+      );
+
+    const intro =
+      section.querySelector(
+        ".contact-intro"
+      );
+
+    const action =
+      section.querySelector(
+        ".contact-action"
+      );
+
+    const services =
+      section.querySelector(
+        ".contact-services"
+      );
+
+    const finalSection =
+      section.querySelector(
+        ".contact-final"
+      );
+
+    const footer =
+      section.querySelector(
+        ".contact-footer"
+      );
+
+    const emailLink =
+      section.querySelector(
+        ".email-link"
+      );
+
+    const emailArrow =
+      section.querySelector(
+        ".email-arrow"
+      );
+
+    const serviceItems =
+      section.querySelectorAll(
+        ".service-list span"
+      );
+
+
+    /* =========================================
+       TITLE REVEAL
+    ========================================== */
+
+    gsap.fromTo(
+      lines,
+      {
+        y: 130,
+        opacity: 0,
+        rotateX: 55,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        rotateX: 0,
+
+        duration: 1.3,
+
+        stagger: 0.12,
+
+        ease: "power4.out",
+
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%",
+          once: true,
+        },
+      }
+    );
+
+
+    /* =========================================
+       INTRO
+    ========================================== */
+
+    if (intro) {
+
+      gsap.fromTo(
+        intro,
+        {
+          y: 40,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 0.45,
+
+          duration: 1,
+
+          ease: "power3.out",
+
+          scrollTrigger: {
+            trigger: intro,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       EMAIL CTA
+    ========================================== */
+
+    if (action) {
+
+      gsap.fromTo(
+        action,
+        {
+          y: 60,
+          opacity: 0,
+          scale: 0.97,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+
+          duration: 1.1,
+
+          ease: "power4.out",
+
+          scrollTrigger: {
+            trigger: action,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       MAGNETIC EMAIL BUTTON
+    ========================================== */
+
+    if (emailLink) {
+
+      emailLink.addEventListener(
+        "pointermove",
+        (event) => {
+
+          const rect =
+            emailLink.getBoundingClientRect();
+
+          const x =
+            event.clientX -
+            rect.left -
+            rect.width / 2;
+
+          const y =
+            event.clientY -
+            rect.top -
+            rect.height / 2;
+
+
+          gsap.to(
+            emailLink,
+            {
+              x: x * 0.12,
+              y: y * 0.12,
+
+              duration: 0.5,
+
+              ease: "power3.out",
+
+              overwrite: true,
+            }
+          );
+
+
+          if (emailArrow) {
+
+            gsap.to(
+              emailArrow,
+              {
+                x: x * 0.2,
+                y: y * 0.2,
+
+                rotation: 45,
+
+                duration: 0.4,
+
+                ease: "power3.out",
+              }
+            );
+
+          }
+
+        }
+      );
+
+
+      emailLink.addEventListener(
+        "pointerleave",
+        () => {
+
+          gsap.to(
+            emailLink,
+            {
+              x: 0,
+              y: 0,
+
+              duration: 0.7,
+
+              ease: "elastic.out(1,0.5)",
+            }
+          );
+
+
+          if (emailArrow) {
+
+            gsap.to(
+              emailArrow,
+              {
+                x: 0,
+                y: 0,
+                rotation: 0,
+
+                duration: 0.6,
+
+                ease: "elastic.out(1,0.5)",
+              }
+            );
+
+          }
+
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       SERVICES REVEAL
+    ========================================== */
+
+    if (serviceItems.length) {
+
+      gsap.fromTo(
+        serviceItems,
+        {
+          y: 25,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 0.5,
+
+          duration: 0.7,
+
+          stagger: 0.06,
+
+          ease: "power3.out",
+
+          scrollTrigger: {
+            trigger: services,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       SERVICE HOVER
+    ========================================== */
+
+    serviceItems.forEach(
+      (item) => {
+
+        item.addEventListener(
+          "mouseenter",
+          () => {
+
+            gsap.to(
+              item,
+              {
+                opacity: 1,
+                x: 10,
+
+                duration: 0.35,
+
+                ease: "power3.out",
+              }
+            );
+
+          }
+        );
+
+
+        item.addEventListener(
+          "mouseleave",
+          () => {
+
+            gsap.to(
+              item,
+              {
+                opacity: 0.5,
+                x: 0,
+
+                duration: 0.35,
+
+                ease: "power3.out",
+              }
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+    /* =========================================
+       FINAL STATEMENT
+    ========================================== */
+
+    if (finalSection) {
+
+      gsap.fromTo(
+        finalSection,
+        {
+          y: 50,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+
+          duration: 1,
+
+          ease: "power4.out",
+
+          scrollTrigger: {
+            trigger: finalSection,
+            start: "top 90%",
+            once: true,
+          },
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       FOOTER
+    ========================================== */
+
+    if (footer) {
+
+      gsap.fromTo(
+        footer,
+        {
+          y: 20,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 0.35,
+
+          duration: 0.8,
+
+          ease: "power3.out",
+
+          scrollTrigger: {
+            trigger: footer,
+            start: "top 95%",
+            once: true,
+          },
+        }
+      );
+
+    }
+
+
+    ScrollTrigger.refresh();
+
+  };
+
+
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initContact,
+      {
+        once: true,
+      }
+    );
+
+  } else {
+
+    initContact();
+
+  }
+</script>
+
+
+<style>
+
+  /* =========================================
+     SECTION
+  ========================================== */
+
+  .contact {
+
+    position:
+      relative;
+
+    min-height:
+      100vh;
+
+    padding:
+      150px 7vw
+      45px;
+
+    background:
+      #050505;
+
+    color:
+      white;
+
+    overflow:
+      hidden;
+
+    border-top:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.12
+      );
+
+  }
+
+
+  /* =========================================
+     HEADER
+  ========================================== */
+
+  .contact-header {
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      space-between;
+
+    margin-bottom:
+      100px;
+
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.2em;
+
+    opacity:
+      0.35;
+
+  }
+
+
+  /* =========================================
+     MAIN
+  ========================================== */
+
+  .contact-main {
+
+    position:
+      relative;
+
+    z-index:
+      2;
+
+  }
+
+
+  .contact-label {
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    gap:
+      15px;
+
+    margin-bottom:
+      30px;
+
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.2em;
+
+    opacity:
+      0.4;
+
+  }
+
+
+  .label-line {
+
+    width:
+      50px;
+
+    height:
+      1px;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.45
+      );
+
+  }
+
+
+  /* =========================================
+     TITLE
+  ========================================== */
+
+  .contact-title {
+
+    margin:
+      0;
+
+    font-size:
+      clamp(
+        70px,
+        12vw,
+        200px
+      );
+
+    line-height:
+      0.76;
+
+    letter-spacing:
+      -0.09em;
+
+    font-weight:
+      500;
+
+    perspective:
+      1000px;
+
+  }
+
+
+  .contact-line {
+
+    display:
+      block;
+
+    transform-origin:
+      left center;
+
+    will-change:
+      transform,
+      opacity;
+
+  }
+
+
+  .contact-line.muted {
+
+    opacity:
+      0.2;
+
+  }
+
+
+  .contact-line em {
+
+    font-style:
+      normal;
+
+    opacity:
+      0.9;
+
+  }
+
+
+  /* =========================================
+     INTRO
+  ========================================== */
+
+  .contact-intro {
+
+    max-width:
+      420px;
+
+    margin:
+      65px 0 0
+      auto;
+
+    font-size:
+      14px;
+
+    line-height:
+      1.7;
+
+    letter-spacing:
+      -0.01em;
+
+  }
+
+
+  /* =========================================
+     EMAIL CTA
+  ========================================== */
+
+  .contact-action {
+
+    margin:
+      120px 0
+      0;
+
+    position:
+      relative;
+
+  }
+
+
+  .email-link {
+
+    position:
+      relative;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      space-between;
+
+    gap:
+      30px;
+
+    padding:
+      28px 0;
+
+    border-top:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.25
+      );
+
+    border-bottom:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.25
+      );
+
+    color:
+      white;
+
+    text-decoration:
+      none;
+
+    transition:
+      border-color
+      0.4s ease;
+
+  }
+
+
+  .email-link:hover {
+
+    border-color:
+      rgba(
+        255,
+        255,
+        255,
+        0.65
+      );
+
+  }
+
+
+  .email-label {
+
+    font-size:
+      8px;
+
+    letter-spacing:
+      0.2em;
+
+    opacity:
+      0.35;
+
+  }
+
+
+  .email {
+
+    margin-left:
+      auto;
+
+    font-size:
+      clamp(
+        14px,
+        2vw,
+        24px
+      );
+
+    letter-spacing:
+      -0.03em;
+
+  }
+
+
+  .email-arrow {
+
+    width:
+      55px;
+
+    height:
+      55px;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.35
+      );
+
+    border-radius:
+      50%;
+
+    font-size:
+      18px;
+
+    flex-shrink:
+      0;
+
+  }
+
+
+  /* =========================================
+     SERVICES
+  ========================================== */
+
+  .contact-services {
+
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr 2fr;
+
+    gap:
+      50px;
+
+    padding:
+      90px 0;
+
+    border-bottom:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.12
+      );
+
+  }
+
+
+  .services-heading {
+
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.2em;
+
+    opacity:
+      0.3;
+
+  }
+
+
+  .service-list {
+
+    display:
+      flex;
+
+    flex-wrap:
+      wrap;
+
+    gap:
+      15px;
+
+  }
+
+
+  .service-list span {
+
+    padding:
+      12px 17px;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.16
+      );
+
+    font-size:
+      8px;
+
+    letter-spacing:
+      0.16em;
+
+    opacity:
+      0.5;
+
+    transition:
+      border-color
+      0.3s ease;
+
+  }
+
+
+  .service-list span:hover {
+
+    border-color:
+      rgba(
+        255,
+        255,
+        255,
+        0.5
+      );
+
+  }
+
+
+  /* =========================================
+     FINAL
+  ========================================== */
+
+  .contact-final {
+
+    padding:
+      100px 0
+      70px;
+
+  }
+
+
+  .final-line {
+
+    width:
+      100%;
+
+    height:
+      1px;
+
+    margin-bottom:
+      35px;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.15
+      );
+
+  }
+
+
+  .final-content {
+
+    display:
+      flex;
+
+    justify-content:
+      space-between;
+
+    align-items:
+      flex-start;
+
+  }
+
+
+  .final-content > span {
+
+    font-size:
+      24px;
+
+    font-weight:
+      700;
+
+    letter-spacing:
+      -0.06em;
+
+  }
+
+
+  .final-content p {
+
+    max-width:
+      500px;
+
+    margin:
+      0;
+
+    font-size:
+      clamp(
+        25px,
+        4vw,
+        55px
+      );
+
+    line-height:
+      0.9;
+
+    letter-spacing:
+      -0.06em;
+
+  }
+
+
+  .final-content strong {
+
+    font-weight:
+      400;
+
+    opacity:
+      0.25;
+
+  }
+
+
+  /* =========================================
+     FOOTER
+  ========================================== */
+
+  .contact-footer {
+
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr 1fr 1fr;
+
+    padding-top:
+      25px;
+
+    border-top:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.12
+      );
+
+    font-size:
+      8px;
+
+    letter-spacing:
+      0.16em;
+
+  }
+
+
+  .contact-footer div:nth-child(2) {
+
+    text-align:
+      center;
+
+  }
+
+
+  .contact-footer div:last-child {
+
+    text-align:
+      right;
+
+  }
+
+
+  .contact-footer a {
+
+    color:
+      white;
+
+    text-decoration:
+      none;
+
+  }
+
+
+  /* =========================================
+     MOBILE
+  ========================================== */
+
+  @media (max-width: 768px) {
+
+    .contact {
+
+      padding:
+        100px 25px
+        30px;
+
+    }
+
+
+    .contact-header {
+
+      margin-bottom:
+        70px;
+
+    }
+
+
+    .contact-header span:last-child {
+
+      display:
+        none;
+
+    }
+
+
+    .contact-title {
+
+      font-size:
+        clamp(
+          58px,
+          16vw,
+          100px
+        );
+
+    }
+
+
+    .contact-intro {
+
+      margin-top:
+        50px;
+
+      font-size:
+        13px;
+
+    }
+
+
+    .contact-action {
+
+      margin-top:
+        80px;
+
+    }
+
+
+    .email-link {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr auto;
+
+      gap:
+        15px;
+
+      padding:
+        25px 0;
+
+    }
+
+
+    .email-label {
+
+      grid-column:
+        1 / -1;
+
+    }
+
+
+    .email {
+
+      margin:
+        0;
+
+      font-size:
+        14px;
+
+    }
+
+
+    .email-arrow {
+
+      width:
+        45px;
+
+      height:
+        45px;
+
+    }
+
+
+    .contact-services {
+
+      grid-template-columns:
+        1fr;
+
+      gap:
+        30px;
+
+      padding:
+        65px 0;
+
+    }
+
+
+    .service-list {
+
+      gap:
+        10px;
+
+    }
+
+
+    .service-list span {
+
+      padding:
+        10px 12px;
+
+    }
+
+
+    .contact-final {
+
+      padding:
+        70px 0
+        50px;
+
+    }
+
+
+    .final-content {
+
+      display:
+        block;
+
+    }
+
+
+    .final-content p {
+
+      margin-top:
+        45px;
+
+      font-size:
+        36px;
+
+    }
+
+
+    .contact-footer {
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        20px;
+
+    }
+
+
+    .contact-footer div:nth-child(2) {
+
+      text-align:
+        right;
+
+    }
+
+
+    .contact-footer div:last-child {
+
+      grid-column:
+        1 / -1;
+
+      text-align:
+        left;
+
+    }
+
+  }
+
+
+  /* =========================================
+     REDUCED MOTION
+  ========================================== */
+
+  @media (
+    prefers-reduced-motion: reduce
+  ) {
+
+    .email-link,
+    .email-arrow,
+    .service-list span {
+
+      transition:
+        none;
+
+    }
+
+  }
+
+</style>

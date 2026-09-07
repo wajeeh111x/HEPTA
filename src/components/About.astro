@@ -1,0 +1,2095 @@
+---
+---
+
+<section class="about" id="about">
+  <!-- =========================================
+       TOP META
+  ========================================== -->
+
+  <div class="about-header">
+    <span>03</span>
+    <span>ABOUT HEPTA</span>
+    <span>TECH × CREATIVITY</span>
+  </div>
+
+
+  <!-- =========================================
+       MAIN TYPOGRAPHY
+  ========================================== -->
+
+  <div class="about-main">
+
+    <div class="about-label">
+      <span class="label-line"></span>
+      <span>WHO WE ARE</span>
+    </div>
+
+    <h2 class="about-title">
+      <span class="title-line">
+        TECHNOLOGY
+      </span>
+
+      <span class="title-line muted">
+        MEETS
+      </span>
+
+      <span class="title-line">
+        <span>CREATIVITY.</span>
+      </span>
+    </h2>
+
+
+    <!-- =======================================
+         DESCRIPTION
+    ======================================== -->
+
+    <div class="about-copy">
+
+      <p class="about-lead">
+        HEPTA builds digital products,
+        intelligent systems and immersive
+        experiences for businesses ready
+        to move forward.
+      </p>
+
+      <p class="about-small">
+        We combine software engineering,
+        artificial intelligence, design and
+        emerging technology to turn complex
+        ideas into meaningful digital
+        experiences.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       3D TECHNOLOGY FIELD
+  ========================================== -->
+
+  <div class="tech-field" data-tech-field>
+
+    <div class="orbit orbit-one"></div>
+    <div class="orbit orbit-two"></div>
+    <div class="orbit orbit-three"></div>
+
+
+    <!-- CENTER -->
+    <div class="tech-core">
+
+      <div class="core-ring"></div>
+
+      <div class="core-inner">
+        <span>H</span>
+      </div>
+
+    </div>
+
+
+    <!-- TECHNOLOGY NODES -->
+
+    <div
+      class="tech-node node-ai"
+      data-depth="1"
+    >
+      <span class="node-dot"></span>
+      <span>AI</span>
+    </div>
+
+
+    <div
+      class="tech-node node-web"
+      data-depth="2"
+    >
+      <span class="node-dot"></span>
+      <span>WEB</span>
+    </div>
+
+
+    <div
+      class="tech-node node-3d"
+      data-depth="3"
+    >
+      <span class="node-dot"></span>
+      <span>3D</span>
+    </div>
+
+
+    <div
+      class="tech-node node-data"
+      data-depth="2"
+    >
+      <span class="node-dot"></span>
+      <span>DATA</span>
+    </div>
+
+
+    <div
+      class="tech-node node-cloud"
+      data-depth="1"
+    >
+      <span class="node-dot"></span>
+      <span>CLOUD</span>
+    </div>
+
+
+    <div
+      class="tech-node node-system"
+      data-depth="3"
+    >
+      <span class="node-dot"></span>
+      <span>SYSTEMS</span>
+    </div>
+
+
+    <!-- CONNECTIONS -->
+
+    <span class="connection connection-one"></span>
+    <span class="connection connection-two"></span>
+    <span class="connection connection-three"></span>
+    <span class="connection connection-four"></span>
+
+  </div>
+
+
+  <!-- =========================================
+       STATEMENT
+  ========================================== -->
+
+  <div class="about-statement">
+
+    <div class="statement-number">
+      03 / 04
+    </div>
+
+    <div class="statement-text">
+      <span>WE DON'T JUST</span>
+
+      <strong>
+        BUILD SOFTWARE.
+      </strong>
+
+      <span>
+        WE BUILD WHAT'S NEXT.
+      </span>
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       STATS
+  ========================================== -->
+
+  <div class="about-stats">
+
+    <div class="stat">
+      <span>01</span>
+      <strong>SOFTWARE</strong>
+      <small>ENGINEERING</small>
+    </div>
+
+    <div class="stat">
+      <span>02</span>
+      <strong>ARTIFICIAL</strong>
+      <small>INTELLIGENCE</small>
+    </div>
+
+    <div class="stat">
+      <span>03</span>
+      <strong>DIGITAL</strong>
+      <small>EXPERIENCES</small>
+    </div>
+
+    <div class="stat">
+      <span>04</span>
+      <strong>EMERGING</strong>
+      <small>TECHNOLOGY</small>
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+
+  const initAbout = () => {
+
+    const section =
+      document.querySelector(".about");
+
+    if (!section) return;
+
+
+    const title =
+      section.querySelector(".about-title");
+
+    const titleLines =
+      section.querySelectorAll(".title-line");
+
+    const lead =
+      section.querySelector(".about-lead");
+
+    const small =
+      section.querySelector(".about-small");
+
+    const field =
+      section.querySelector("[data-tech-field]");
+
+    const nodes =
+      section.querySelectorAll(".tech-node");
+
+    const orbits =
+      section.querySelectorAll(".orbit");
+
+    const statement =
+      section.querySelector(".about-statement");
+
+    const stats =
+      section.querySelectorAll(".stat");
+
+
+    /* =========================================
+       TITLE REVEAL
+    ========================================== */
+
+    if (titleLines.length) {
+
+      gsap.fromTo(
+        titleLines,
+        {
+          y: 140,
+          opacity: 0,
+          rotateX: 55,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          rotateX: 0,
+
+          duration: 1.3,
+
+          stagger: 0.12,
+
+          ease: "power4.out",
+
+          scrollTrigger: {
+            trigger: title,
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       COPY REVEAL
+    ========================================== */
+
+    if (lead) {
+
+      gsap.fromTo(
+        lead,
+        {
+          y: 50,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 0.65,
+
+          duration: 1,
+
+          ease: "power3.out",
+
+          scrollTrigger: {
+            trigger: lead,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+
+    }
+
+
+    if (small) {
+
+      gsap.fromTo(
+        small,
+        {
+          y: 40,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 0.35,
+
+          duration: 1,
+
+          delay: 0.15,
+
+          ease: "power3.out",
+
+          scrollTrigger: {
+            trigger: small,
+            start: "top 90%",
+            once: true,
+          },
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       TECHNOLOGY FIELD
+    ========================================== */
+
+    if (field) {
+
+      gsap.fromTo(
+        field,
+        {
+          opacity: 0,
+          scale: 0.75,
+          rotateX: 20,
+          rotateY: -15,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          rotateX: 0,
+          rotateY: 0,
+
+          duration: 1.8,
+
+          ease: "power4.out",
+
+          scrollTrigger: {
+            trigger: field,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       NODE REVEAL
+    ========================================== */
+
+    if (nodes.length) {
+
+      gsap.fromTo(
+        nodes,
+        {
+          scale: 0,
+          opacity: 0,
+        },
+        {
+          scale: 1,
+          opacity: 1,
+
+          duration: 0.8,
+
+          stagger: 0.08,
+
+          ease: "back.out(1.8)",
+
+          scrollTrigger: {
+            trigger: field,
+            start: "top 75%",
+            once: true,
+          },
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       ORBIT ANIMATION
+    ========================================== */
+
+    if (orbits.length) {
+
+      gsap.to(
+        orbits[0],
+        {
+          rotation: 360,
+
+          duration: 28,
+
+          repeat: -1,
+
+          ease: "none",
+        }
+      );
+
+
+      gsap.to(
+        orbits[1],
+        {
+          rotation: -360,
+
+          duration: 38,
+
+          repeat: -1,
+
+          ease: "none",
+        }
+      );
+
+
+      gsap.to(
+        orbits[2],
+        {
+          rotation: 360,
+
+          duration: 48,
+
+          repeat: -1,
+
+          ease: "none",
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       MOUSE PARALLAX
+    ========================================== */
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let smoothX = 0;
+    let smoothY = 0;
+
+
+    section.addEventListener(
+      "pointermove",
+      (event) => {
+
+        const rect =
+          section.getBoundingClientRect();
+
+        mouseX =
+          (
+            event.clientX -
+            rect.left
+          ) /
+            rect.width -
+          0.5;
+
+        mouseY =
+          (
+            event.clientY -
+            rect.top
+          ) /
+            rect.height -
+          0.5;
+
+      }
+    );
+
+
+    section.addEventListener(
+      "pointerleave",
+      () => {
+
+        mouseX = 0;
+        mouseY = 0;
+
+      }
+    );
+
+
+    const animateParallax = () => {
+
+      smoothX +=
+        (mouseX - smoothX) *
+        0.04;
+
+      smoothY +=
+        (mouseY - smoothY) *
+        0.04;
+
+
+      if (field) {
+
+        gsap.set(
+          field,
+          {
+            rotateX:
+              -smoothY * 8,
+
+            rotateY:
+              smoothX * 10,
+
+            x:
+              smoothX * 15,
+
+            y:
+              smoothY * 15,
+          }
+        );
+
+      }
+
+
+      nodes.forEach(
+        (node) => {
+
+          const depth =
+            Number(
+              node.dataset.depth ||
+              1
+            );
+
+
+          gsap.set(
+            node,
+            {
+              x:
+                smoothX *
+                depth *
+                18,
+
+              y:
+                smoothY *
+                depth *
+                18,
+            }
+          );
+
+        }
+      );
+
+
+      requestAnimationFrame(
+        animateParallax
+      );
+
+    };
+
+
+    animateParallax();
+
+
+    /* =========================================
+       STATEMENT REVEAL
+    ========================================== */
+
+    if (statement) {
+
+      gsap.fromTo(
+        statement,
+        {
+          y: 80,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+
+          duration: 1.2,
+
+          ease: "power4.out",
+
+          scrollTrigger: {
+            trigger: statement,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       STAT HOVER
+    ========================================== */
+
+    stats.forEach(
+      (stat) => {
+
+        const number =
+          stat.querySelector("span");
+
+        const title =
+          stat.querySelector("strong");
+
+
+        stat.addEventListener(
+          "mouseenter",
+          () => {
+
+            gsap.to(
+              stat,
+              {
+                y: -8,
+                duration: 0.4,
+                ease: "power3.out",
+              }
+            );
+
+
+            gsap.to(
+              number,
+              {
+                opacity: 1,
+                duration: 0.3,
+              }
+            );
+
+
+            gsap.to(
+              title,
+              {
+                x: 8,
+                duration: 0.4,
+                ease: "power3.out",
+              }
+            );
+
+          }
+        );
+
+
+        stat.addEventListener(
+          "mouseleave",
+          () => {
+
+            gsap.to(
+              stat,
+              {
+                y: 0,
+                duration: 0.4,
+                ease: "power3.out",
+              }
+            );
+
+
+            gsap.to(
+              number,
+              {
+                opacity: 0.35,
+                duration: 0.3,
+              }
+            );
+
+
+            gsap.to(
+              title,
+              {
+                x: 0,
+                duration: 0.4,
+                ease: "power3.out",
+              }
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+    ScrollTrigger.refresh();
+
+  };
+
+
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initAbout,
+      {
+        once: true,
+      }
+    );
+
+  } else {
+
+    initAbout();
+
+  }
+</script>
+
+
+<style>
+
+  /* =========================================
+     SECTION
+  ========================================== */
+
+  .about {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+      150px 7vw
+      100px;
+
+    background:
+      #050505;
+
+    color:
+      white;
+
+    overflow:
+      hidden;
+
+    perspective:
+      1600px;
+
+    border-top:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.12
+      );
+
+  }
+
+
+  /* =========================================
+     HEADER
+  ========================================== */
+
+  .about-header {
+
+    display:
+      flex;
+
+    justify-content:
+      space-between;
+
+    align-items:
+      center;
+
+    margin-bottom:
+      100px;
+
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.2em;
+
+    opacity:
+      0.35;
+
+  }
+
+
+  /* =========================================
+     MAIN
+  ========================================== */
+
+  .about-main {
+
+    position:
+      relative;
+
+    z-index:
+      5;
+
+  }
+
+
+  .about-label {
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    gap:
+      14px;
+
+    margin-bottom:
+      30px;
+
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.2em;
+
+    opacity:
+      0.4;
+
+  }
+
+
+  .label-line {
+
+    width:
+      45px;
+
+    height:
+      1px;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.5
+      );
+
+  }
+
+
+  /* =========================================
+     TITLE
+  ========================================== */
+
+  .about-title {
+
+    margin:
+      0;
+
+    font-size:
+      clamp(
+        70px,
+        11.5vw,
+        190px
+      );
+
+    line-height:
+      0.76;
+
+    letter-spacing:
+      -0.085em;
+
+    font-weight:
+      500;
+
+    perspective:
+      900px;
+
+  }
+
+
+  .title-line {
+
+    display:
+      block;
+
+    transform-origin:
+      left center;
+
+    will-change:
+      transform,
+      opacity;
+
+  }
+
+
+  .title-line.muted {
+
+    opacity:
+      0.2;
+
+  }
+
+
+  /* =========================================
+     COPY
+  ========================================== */
+
+  .about-copy {
+
+    display:
+      grid;
+
+    grid-template-columns:
+      1.4fr
+      0.7fr;
+
+    gap:
+      8vw;
+
+    max-width:
+      850px;
+
+    margin-top:
+      70px;
+
+    margin-left:
+      auto;
+
+  }
+
+
+  .about-lead {
+
+    margin:
+      0;
+
+    font-size:
+      clamp(
+        20px,
+        2vw,
+        30px
+      );
+
+    line-height:
+      1.35;
+
+    letter-spacing:
+      -0.025em;
+
+  }
+
+
+  .about-small {
+
+    margin:
+      0;
+
+    font-size:
+      11px;
+
+    line-height:
+      1.8;
+
+    opacity:
+      0.35;
+
+  }
+
+
+  /* =========================================
+     TECH FIELD
+  ========================================== */
+
+  .tech-field {
+
+    position:
+      relative;
+
+    width:
+      min(
+        100%,
+        950px
+      );
+
+    height:
+      700px;
+
+    margin:
+      100px auto
+      20px;
+
+    transform-style:
+      preserve-3d;
+
+    will-change:
+      transform;
+
+  }
+
+
+  /* =========================================
+     ORBITS
+  ========================================== */
+
+  .orbit {
+
+    position:
+      absolute;
+
+    left:
+      50%;
+
+    top:
+      50%;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.1
+      );
+
+    border-radius:
+      50%;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      );
+
+    pointer-events:
+      none;
+
+  }
+
+
+  .orbit-one {
+
+    width:
+      430px;
+
+    height:
+      430px;
+
+  }
+
+
+  .orbit-two {
+
+    width:
+      620px;
+
+    height:
+      280px;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(
+        35deg
+      );
+
+  }
+
+
+  .orbit-three {
+
+    width:
+      760px;
+
+    height:
+      380px;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(
+        -45deg
+      );
+
+  }
+
+
+  /* =========================================
+     CORE
+  ========================================== */
+
+  .tech-core {
+
+    position:
+      absolute;
+
+    left:
+      50%;
+
+    top:
+      50%;
+
+    width:
+      150px;
+
+    height:
+      150px;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      );
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    transform-style:
+      preserve-3d;
+
+  }
+
+
+  .core-ring {
+
+    position:
+      absolute;
+
+    inset:
+      0;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.4
+      );
+
+    border-radius:
+      50%;
+
+    animation:
+      coreRotate
+      8s linear
+      infinite;
+
+  }
+
+
+  .core-ring::before,
+  .core-ring::after {
+
+    content:
+      "";
+
+    position:
+      absolute;
+
+    width:
+      7px;
+
+    height:
+      7px;
+
+    background:
+      white;
+
+    border-radius:
+      50%;
+
+  }
+
+
+  .core-ring::before {
+
+    top:
+      -3px;
+
+    left:
+      50%;
+
+  }
+
+
+  .core-ring::after {
+
+    bottom:
+      -3px;
+
+    left:
+      50%;
+
+  }
+
+
+  .core-inner {
+
+    width:
+      95px;
+
+    height:
+      95px;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.18
+      );
+
+    border-radius:
+      50%;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(
+          255,
+          255,
+          255,
+          0.12
+        ),
+        transparent 70%
+      );
+
+    box-shadow:
+      0 0 80px
+      rgba(
+        255,
+        255,
+        255,
+        0.08
+      );
+
+  }
+
+
+  .core-inner span {
+
+    font-size:
+      34px;
+
+    font-weight:
+      600;
+
+    letter-spacing:
+      -0.08em;
+
+  }
+
+
+  @keyframes coreRotate {
+
+    from {
+      transform:
+        rotate(0deg);
+    }
+
+    to {
+      transform:
+        rotate(360deg);
+    }
+
+  }
+
+
+  /* =========================================
+     NODES
+  ========================================== */
+
+  .tech-node {
+
+    position:
+      absolute;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    gap:
+      10px;
+
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.2em;
+
+    opacity:
+      0.7;
+
+    transform-style:
+      preserve-3d;
+
+    will-change:
+      transform;
+
+  }
+
+
+  .node-dot {
+
+    width:
+      6px;
+
+    height:
+      6px;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.8
+      );
+
+    border-radius:
+      50%;
+
+    box-shadow:
+      0 0 15px
+      rgba(
+        255,
+        255,
+        255,
+        0.4
+      );
+
+  }
+
+
+  .node-ai {
+
+    left:
+      15%;
+
+    top:
+      25%;
+
+  }
+
+
+  .node-web {
+
+    right:
+      16%;
+
+    top:
+      20%;
+
+  }
+
+
+  .node-3d {
+
+    right:
+      7%;
+
+    top:
+      52%;
+
+  }
+
+
+  .node-data {
+
+    left:
+      12%;
+
+    bottom:
+      25%;
+
+  }
+
+
+  .node-cloud {
+
+    right:
+      20%;
+
+    bottom:
+      17%;
+
+  }
+
+
+  .node-system {
+
+    left:
+      38%;
+
+    top:
+      8%;
+
+  }
+
+
+  /* =========================================
+     CONNECTIONS
+  ========================================== */
+
+  .connection {
+
+    position:
+      absolute;
+
+    height:
+      1px;
+
+    transform-origin:
+      left center;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(
+          255,
+          255,
+          255,
+          0.18
+        ),
+        transparent
+      );
+
+    opacity:
+      0.5;
+
+  }
+
+
+  .connection-one {
+
+    width:
+      250px;
+
+    left:
+      20%;
+
+    top:
+      30%;
+
+    transform:
+      rotate(
+        24deg
+      );
+
+  }
+
+
+  .connection-two {
+
+    width:
+      280px;
+
+    left:
+      52%;
+
+    top:
+      25%;
+
+    transform:
+      rotate(
+        145deg
+      );
+
+  }
+
+
+  .connection-three {
+
+    width:
+      300px;
+
+    left:
+      25%;
+
+    top:
+      67%;
+
+    transform:
+      rotate(
+        -20deg
+      );
+
+  }
+
+
+  .connection-four {
+
+    width:
+      260px;
+
+    left:
+      52%;
+
+    top:
+      60%;
+
+    transform:
+      rotate(
+        15deg
+      );
+
+  }
+
+
+  /* =========================================
+     STATEMENT
+  ========================================== */
+
+  .about-statement {
+
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr
+      2fr;
+
+    gap:
+      40px;
+
+    padding:
+      100px 0;
+
+    border-top:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.12
+      );
+
+    border-bottom:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.12
+      );
+
+  }
+
+
+  .statement-number {
+
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.2em;
+
+    opacity:
+      0.3;
+
+  }
+
+
+  .statement-text {
+
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    gap:
+      5px;
+
+    font-size:
+      clamp(
+        30px,
+        5vw,
+        75px
+      );
+
+    line-height:
+      0.9;
+
+    letter-spacing:
+      -0.06em;
+
+  }
+
+
+  .statement-text span {
+
+    opacity:
+      0.25;
+
+  }
+
+
+  .statement-text strong {
+
+    font-weight:
+      400;
+
+  }
+
+
+  /* =========================================
+     STATS
+  ========================================== */
+
+  .about-stats {
+
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(
+        4,
+        1fr
+      );
+
+    margin-top:
+      70px;
+
+  }
+
+
+  .stat {
+
+    position:
+      relative;
+
+    min-height:
+      130px;
+
+    padding:
+      0 25px;
+
+    border-left:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.12
+      );
+
+    cursor:
+      default;
+
+  }
+
+
+  .stat:first-child {
+
+    padding-left:
+      0;
+
+    border-left:
+      none;
+
+  }
+
+
+  .stat span {
+
+    display:
+      block;
+
+    margin-bottom:
+      30px;
+
+    font-size:
+      8px;
+
+    letter-spacing:
+      0.15em;
+
+    opacity:
+      0.35;
+
+  }
+
+
+  .stat strong {
+
+    display:
+      block;
+
+    font-size:
+      13px;
+
+    font-weight:
+      400;
+
+    letter-spacing:
+      0.08em;
+
+  }
+
+
+  .stat small {
+
+    display:
+      block;
+
+    margin-top:
+      7px;
+
+    font-size:
+      8px;
+
+    letter-spacing:
+      0.14em;
+
+    opacity:
+      0.3;
+
+  }
+
+
+  /* =========================================
+     TABLET
+  ========================================== */
+
+  @media (max-width: 1000px) {
+
+    .about {
+
+      padding:
+        120px 6vw
+        80px;
+
+    }
+
+
+    .tech-field {
+
+      height:
+        600px;
+
+    }
+
+
+    .orbit-one {
+
+      width:
+        350px;
+
+      height:
+        350px;
+
+    }
+
+
+    .orbit-two {
+
+      width:
+        500px;
+
+    }
+
+
+    .orbit-three {
+
+      width:
+        620px;
+
+    }
+
+  }
+
+
+  /* =========================================
+     MOBILE
+  ========================================== */
+
+  @media (max-width: 768px) {
+
+    .about {
+
+      padding:
+        100px 25px
+        70px;
+
+    }
+
+
+    .about-header {
+
+      margin-bottom:
+        70px;
+
+    }
+
+
+    .about-header span:last-child {
+
+      display:
+        none;
+
+    }
+
+
+    .about-title {
+
+      font-size:
+        clamp(
+          58px,
+          16vw,
+          100px
+        );
+
+    }
+
+
+    .about-copy {
+
+      grid-template-columns:
+        1fr;
+
+      gap:
+        30px;
+
+      margin-top:
+        50px;
+
+    }
+
+
+    .about-lead {
+
+      font-size:
+        20px;
+
+    }
+
+
+    .tech-field {
+
+      height:
+        480px;
+
+      margin:
+        60px auto
+        0;
+
+    }
+
+
+    .orbit-one {
+
+      width:
+        230px;
+
+      height:
+        230px;
+
+    }
+
+
+    .orbit-two {
+
+      width:
+        330px;
+
+      height:
+        180px;
+
+    }
+
+
+    .orbit-three {
+
+      width:
+        400px;
+
+      height:
+        220px;
+
+    }
+
+
+    .tech-core {
+
+      width:
+        100px;
+
+      height:
+        100px;
+
+    }
+
+
+    .core-inner {
+
+      width:
+        65px;
+
+      height:
+        65px;
+
+    }
+
+
+    .core-inner span {
+
+      font-size:
+        25px;
+
+    }
+
+
+    .tech-node {
+
+      font-size:
+        7px;
+
+    }
+
+
+    .node-ai {
+
+      left:
+        5%;
+
+    }
+
+
+    .node-web {
+
+      right:
+        5%;
+
+    }
+
+
+    .node-3d {
+
+      right:
+        0%;
+
+    }
+
+
+    .node-data {
+
+      left:
+        2%;
+
+    }
+
+
+    .node-cloud {
+
+      right:
+        7%;
+
+    }
+
+
+    .node-system {
+
+      left:
+        32%;
+
+      top:
+        5%;
+
+    }
+
+
+    .connection {
+
+      display:
+        none;
+
+    }
+
+
+    .about-statement {
+
+      grid-template-columns:
+        1fr;
+
+      gap:
+        30px;
+
+      padding:
+        70px 0;
+
+    }
+
+
+    .statement-text {
+
+      font-size:
+        34px;
+
+    }
+
+
+    .about-stats {
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        40px 0;
+
+    }
+
+
+    .stat {
+
+      min-height:
+        100px;
+
+    }
+
+
+    .stat:nth-child(3) {
+
+      padding-left:
+        0;
+
+      border-left:
+        none;
+
+    }
+
+  }
+
+
+  /* =========================================
+     REDUCED MOTION
+  ========================================== */
+
+  @media (
+    prefers-reduced-motion: reduce
+  ) {
+
+    .core-ring {
+
+      animation:
+        none;
+
+    }
+
+  }
+
+</style>

@@ -1,17 +1,323 @@
 ---
+import Loader from "../components/Loader.astro";
+import Hero from "../components/Hero.astro";
+import SmoothScroll from "../components/SmoothScroll";
+import Services from "../components/Services.astro";
+import Work from "../components/Work.astro";
+import About from "../components/About.astro";
+import Contact from "../components/Contact.astro";
+import Cursor from "../components/Cursor.astro";
 
 ---
+<!doctype html>
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>
+    HEPTA — Software Solutions
+  </title>
+
+</head>
+
+
+<body>
+
+  <!-- =========================================
+       PAGE LOADER
+  ========================================== -->
+
+  <Loader />
+
+  <Cursor />
+
+  <SmoothScroll client:load />
+
+
+  <!-- =========================================
+       NAVIGATION
+  ========================================== -->
+
+  <header class="nav">
+
+    <a
+      href="/"
+      class="logo"
+    >
+      HEPTA
+    </a>
+
+
+    <nav>
+
+      <a href="#services">
+        SERVICES
+      </a>
+
+      <a href="#work">
+        WORK
+      </a>
+
+      <a href="#about">
+        ABOUT
+      </a>
+
+      <a href="#contact">
+        CONTACT
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =========================================
+       MAIN
+  ========================================== -->
+
+  <main>
+
+    <Hero />
+
+    <Services />
+
+    <Work />
+
+    <About />
+
+    <Contact />
+
+  </main>
+
+</body>
+
 </html>
+
+
+<style>
+
+  :global(*) {
+
+    box-sizing:
+      border-box;
+
+  }
+
+
+  :global(html) {
+
+    scroll-behavior:
+      smooth;
+
+  }
+
+
+  :global(body) {
+
+    margin: 0;
+
+    background:
+      #050505;
+
+    color:
+      white;
+
+    font-family:
+      Arial,
+      Helvetica,
+      sans-serif;
+
+  }
+
+
+  /* =========================================
+     NAVIGATION
+  ========================================== */
+
+  .nav {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding:
+      28px 40px;
+
+    display: flex;
+
+    justify-content:
+      space-between;
+
+    align-items:
+      center;
+
+    z-index: 100;
+
+    mix-blend-mode:
+      difference;
+
+  }
+
+
+  .logo {
+
+    color:
+      white;
+
+    text-decoration:
+      none;
+
+    font-size:
+      24px;
+
+    font-weight:
+      800;
+
+    letter-spacing:
+      -0.05em;
+
+  }
+
+
+  nav {
+
+    display: flex;
+
+    gap:
+      34px;
+
+  }
+
+
+  nav a {
+
+    color:
+      white;
+
+    text-decoration:
+      none;
+
+    font-size:
+      10px;
+
+    letter-spacing:
+      0.16em;
+
+    opacity:
+      0.7;
+
+    transition:
+      opacity 0.3s ease;
+
+  }
+
+
+  nav a:hover {
+
+    opacity:
+      1;
+
+  }
+
+
+  /* =========================================
+     SIMPLE SECTIONS
+  ========================================== */
+
+  .simple-section {
+
+    min-height:
+      100vh;
+
+    padding:
+      10vw 8vw;
+
+    display: flex;
+
+    flex-direction:
+      column;
+
+    justify-content:
+      center;
+
+    border-top:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.1
+      );
+
+  }
+
+
+  .simple-section span {
+
+    margin-bottom:
+      30px;
+
+    font-size:
+      10px;
+
+    opacity:
+      0.4;
+
+  }
+
+
+  .simple-section h2 {
+
+    margin: 0;
+
+    font-size:
+      clamp(
+        50px,
+        9vw,
+        140px
+      );
+
+    line-height:
+      0.85;
+
+    letter-spacing:
+      -0.06em;
+
+  }
+
+
+  /* =========================================
+     MOBILE
+  ========================================== */
+
+  @media (max-width: 768px) {
+
+    .nav {
+
+      padding:
+        20px 25px;
+
+    }
+
+
+    nav {
+
+      display:
+        none;
+
+    }
+
+  }
+
+</style>

@@ -1,0 +1,361 @@
+---
+const {
+  text,
+  class: className = "",
+} = Astro.props;
+---
+
+<div
+  class={`word-reveal ${className}`}
+  aria-label={text}
+>
+  {
+    text
+      .split(" ")
+      .map((word: string, index: number) => (
+        <span
+          class="word"
+          data-cursor-word
+          style={`--word-index: ${index};`}
+        >
+          <span class="word-inner">
+            {word}
+          </span>
+        </span>
+      ))
+  }
+</div>
+
+<style>
+  /* =========================================
+     WORD REVEAL
+  ========================================== */
+
+  .word-reveal {
+    display: block;
+
+    position: relative;
+
+    cursor: default;
+
+    /*
+     * IMPORTANT
+     * The container itself must always be visible.
+     */
+    opacity: 1;
+
+    visibility: visible;
+  }
+
+
+  /* =========================================
+     WORD
+  ========================================== */
+
+  .word {
+    display: inline-block;
+
+    overflow: hidden;
+
+    margin-right: 0.25em;
+
+    vertical-align: top;
+
+    cursor: default;
+  }
+
+
+  /* =========================================
+     WORD INNER
+  ========================================== */
+
+  .word-inner {
+    display: inline-block;
+
+    /*
+     * Start visible.
+     *
+     * GSAP will animate FROM these values.
+     * This prevents the text from permanently
+     * disappearing if JavaScript fails.
+     */
+    transform: translateY(0);
+
+    opacity: 1;
+
+    will-change:
+      transform,
+      opacity;
+
+    transition:
+      transform 0.45s
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+
+      opacity 0.35s ease;
+  }
+
+
+  /* =========================================
+     WORD HOVER
+  ========================================== */
+
+  .word:hover
+  .word-inner {
+    transform:
+      translateY(-0.12em);
+
+    opacity: 0.45;
+  }
+
+
+  /* =========================================
+     MUTED
+  ========================================== */
+
+  .word-reveal.muted {
+    opacity: 0.28;
+  }
+
+
+  /* =========================================
+     MOBILE
+  ========================================== */
+
+  @media (max-width: 768px) {
+
+    .word {
+      margin-right: 0.2em;
+    }
+
+  }
+</style>
+
+
+<script>
+  import gsap from "gsap";
+
+  import {
+    ScrollTrigger
+  } from "gsap/ScrollTrigger";
+
+
+  gsap.registerPlugin(
+    ScrollTrigger
+  );
+
+
+  /* =========================================
+     INITIALIZE
+  ========================================== */
+
+  const initWordReveal = () => {
+
+    const wordReveals =
+      document.querySelectorAll(
+        ".word-reveal"
+      );
+
+
+    wordReveals.forEach(
+      (container) => {
+
+        const words =
+          container.querySelectorAll(
+            ".word-inner"
+          );
+
+
+        if (!words.length) {
+          return;
+        }
+
+
+        /*
+         * FROM → TO
+         *
+         * This is safer than gsap.to()
+         * because the animation explicitly
+         * controls the starting state.
+         */
+
+        gsap.fromTo(
+          words,
+
+          {
+            y: "110%",
+            opacity: 0,
+          },
+
+          {
+            y: "0%",
+            opacity: 1,
+
+            duration: 1,
+
+            stagger: 0.08,
+
+            ease:
+              "power4.out",
+
+            scrollTrigger: {
+
+              trigger:
+                container,
+
+              start:
+                "top 85%",
+
+              once: true,
+
+            },
+
+          }
+        );
+
+      }
+    );
+
+
+    /*
+     * Refresh ScrollTrigger after
+     * everything has been initialized.
+     */
+
+    ScrollTrigger.refresh();
+
+  };
+
+
+  /* =========================================
+     ASTRO PAGE LOAD
+  ========================================== */
+
+  document.addEventListener(
+    "astro:page-load",
+    initWordReveal,
+    {
+      once: true,
+    }
+  );
+
+
+  /*
+   * Also initialize immediately
+   * for the initial page load.
+   */
+
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initWordReveal,
+      {
+        once: true,
+      }
+    );
+
+  } else {
+
+    initWordReveal();
+
+  }
+
+
+  /* =========================================
+     WORD HOVER
+  ========================================== */
+
+  const initWordHover = () => {
+
+    const words =
+      document.querySelectorAll(
+        "[data-cursor-word]"
+      );
+
+
+    words.forEach(
+      (word) => {
+
+        const inner =
+          word.querySelector(
+            ".word-inner"
+          );
+
+
+        if (!inner) {
+          return;
+        }
+
+
+        word.addEventListener(
+          "mouseenter",
+          () => {
+
+            gsap.to(
+              inner,
+              {
+                y: "-0.12em",
+
+                duration: 0.4,
+
+                ease:
+                  "power3.out",
+              }
+            );
+
+          }
+        );
+
+
+        word.addEventListener(
+          "mouseleave",
+          () => {
+
+            gsap.to(
+              inner,
+              {
+                y: "0%",
+
+                duration: 0.5,
+
+                ease:
+                  "power3.out",
+              }
+            );
+
+          }
+        );
+
+      }
+    );
+
+  };
+
+
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initWordHover,
+      {
+        once: true,
+      }
+    );
+
+  } else {
+
+    initWordHover();
+
+  }
+</script>

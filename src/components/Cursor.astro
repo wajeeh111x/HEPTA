@@ -1,0 +1,626 @@
+---
+---
+
+<div class="cursor" id="hepta-cursor">
+
+  <div class="cursor-dot"></div>
+
+  <div class="cursor-ring">
+    <div class="cursor-ring-inner"></div>
+  </div>
+
+  <div class="cursor-label">
+    VIEW
+  </div>
+
+</div>
+
+
+<script>
+  import gsap from "gsap";
+
+  const cursor =
+    document.getElementById(
+      "hepta-cursor"
+    );
+
+  const dot =
+    cursor?.querySelector(
+      ".cursor-dot"
+    ) as HTMLElement | null;
+
+  const ring =
+    cursor?.querySelector(
+      ".cursor-ring"
+    ) as HTMLElement | null;
+
+  const label =
+    cursor?.querySelector(
+      ".cursor-label"
+    ) as HTMLElement | null;
+
+
+  if (
+    cursor &&
+    dot &&
+    ring &&
+    label
+  ) {
+
+    /*
+     * Mouse position
+     */
+
+    const mouse = {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2,
+    };
+
+
+    const position = {
+      x: mouse.x,
+      y: mouse.y,
+    };
+
+
+    /*
+     * Mouse movement
+     */
+
+    window.addEventListener(
+      "mousemove",
+      (event) => {
+
+        mouse.x =
+          event.clientX;
+
+        mouse.y =
+          event.clientY;
+
+
+        /*
+         * Small dot follows immediately
+         */
+
+        gsap.to(
+          dot,
+          {
+            x: mouse.x,
+            y: mouse.y,
+
+            duration: 0.08,
+
+            ease:
+              "power2.out",
+
+            overwrite: true,
+          }
+        );
+
+      }
+    );
+
+
+    /*
+     * Smooth ring movement
+     */
+
+    gsap.ticker.add(() => {
+
+      position.x +=
+        (mouse.x - position.x)
+        * 0.12;
+
+      position.y +=
+        (mouse.y - position.y)
+        * 0.12;
+
+
+      gsap.set(
+        ring,
+        {
+          x: position.x,
+          y: position.y,
+        }
+      );
+
+
+      gsap.set(
+        label,
+        {
+          x: position.x,
+          y: position.y,
+        }
+      );
+
+    });
+
+
+    /*
+     * Interactive elements
+     */
+
+    const interactiveElements =
+      document.querySelectorAll(
+        "a, button, [data-cursor-word]"
+      );
+
+
+    interactiveElements.forEach(
+      (element) => {
+
+        element.addEventListener(
+          "mouseenter",
+          () => {
+
+            gsap.to(
+              ring,
+              {
+                scale: 1.7,
+
+                duration: 0.4,
+
+                ease:
+                  "power3.out",
+              }
+            );
+
+
+            gsap.to(
+              dot,
+              {
+                scale: 0.5,
+
+                duration: 0.25,
+              }
+            );
+
+          }
+        );
+
+
+        element.addEventListener(
+          "mouseleave",
+          () => {
+
+            gsap.to(
+              ring,
+              {
+                scale: 1,
+
+                duration: 0.4,
+
+                ease:
+                  "power3.out",
+              }
+            );
+
+
+            gsap.to(
+              dot,
+              {
+                scale: 1,
+
+                duration: 0.25,
+              }
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+    /*
+     * Project cards
+     */
+
+    const projectCards =
+      document.querySelectorAll(
+        ".project-card"
+      );
+
+
+    projectCards.forEach(
+      (card) => {
+
+        card.addEventListener(
+          "mouseenter",
+          () => {
+
+            gsap.to(
+              ring,
+              {
+                scale: 2.2,
+
+                borderColor:
+                  "rgba(255,255,255,0.9)",
+
+                duration: 0.5,
+
+                ease:
+                  "power3.out",
+              }
+            );
+
+
+            gsap.to(
+              label,
+              {
+                opacity: 1,
+
+                scale: 1,
+
+                duration: 0.35,
+
+                ease:
+                  "power3.out",
+              }
+            );
+
+          }
+        );
+
+
+        card.addEventListener(
+          "mouseleave",
+          () => {
+
+            gsap.to(
+              ring,
+              {
+                scale: 1,
+
+                borderColor:
+                  "rgba(255,255,255,0.45)",
+
+                duration: 0.4,
+
+                ease:
+                  "power3.out",
+              }
+            );
+
+
+            gsap.to(
+              label,
+              {
+                opacity: 0,
+
+                scale: 0.7,
+
+                duration: 0.3,
+
+                ease:
+                  "power3.out",
+              }
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+    /*
+     * Magnetic effect
+     */
+
+    const magneticElements =
+      document.querySelectorAll(
+        ".logo, .menu-toggle, .contact-link"
+      );
+
+
+    magneticElements.forEach(
+      (element) => {
+
+        element.addEventListener(
+          "mousemove",
+          (event) => {
+
+            const rect =
+              (
+                element as HTMLElement
+              ).getBoundingClientRect();
+
+
+            const x =
+              event.clientX -
+              (
+                rect.left +
+                rect.width / 2
+              );
+
+
+            const y =
+              event.clientY -
+              (
+                rect.top +
+                rect.height / 2
+              );
+
+
+            gsap.to(
+              element,
+              {
+                x: x * 0.18,
+                y: y * 0.18,
+
+                duration: 0.4,
+
+                ease:
+                  "power3.out",
+              }
+            );
+
+          }
+        );
+
+
+        element.addEventListener(
+          "mouseleave",
+          () => {
+
+            gsap.to(
+              element,
+              {
+                x: 0,
+                y: 0,
+
+                duration: 0.5,
+
+                ease:
+                  "elastic.out(1,0.4)",
+              }
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+    /*
+     * Hide cursor when leaving page
+     */
+
+    document.addEventListener(
+      "mouseleave",
+      () => {
+
+        gsap.to(
+          cursor,
+          {
+            opacity: 0,
+
+            duration: 0.3,
+          }
+        );
+
+      }
+    );
+
+
+    document.addEventListener(
+      "mouseenter",
+      () => {
+
+        gsap.to(
+          cursor,
+          {
+            opacity: 1,
+
+            duration: 0.3,
+          }
+        );
+
+      }
+    );
+
+  }
+
+</script>
+
+
+<style>
+
+  /* =========================================
+     CURSOR
+  ========================================== */
+
+  .cursor {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100000;
+
+    pointer-events: none;
+
+    opacity: 1;
+
+  }
+
+
+  /* =========================================
+     DOT
+  ========================================== */
+
+  .cursor-dot {
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+    width: 6px;
+
+    height: 6px;
+
+    margin-left: -3px;
+
+    margin-top: -3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    will-change:
+      transform;
+
+  }
+
+
+  /* =========================================
+     OUTER RING
+  ========================================== */
+
+  .cursor-ring {
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+    width: 42px;
+
+    height: 42px;
+
+    margin-left: -21px;
+
+    margin-top: -21px;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.45
+      );
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    will-change:
+      transform;
+
+  }
+
+
+  /* =========================================
+     INNER RING
+  ========================================== */
+
+  .cursor-ring-inner {
+
+    width: 4px;
+
+    height: 4px;
+
+    border-radius: 50%;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.5
+      );
+
+  }
+
+
+  /* =========================================
+     LABEL
+  ========================================== */
+
+  .cursor-label {
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+    width: 76px;
+
+    height: 76px;
+
+    margin-left: -38px;
+
+    margin-top: -38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #050505;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing:
+      0.15em;
+
+    opacity: 0;
+
+    transform:
+      scale(0.7);
+
+    will-change:
+      transform,
+      opacity;
+
+  }
+
+
+  /* =========================================
+     MOBILE
+  ========================================== */
+
+  @media (
+    max-width: 768px
+  ) {
+
+    .cursor {
+
+      display: none;
+
+    }
+
+  }
+
+
+  @media (
+    pointer: coarse
+  ) {
+
+    .cursor {
+
+      display: none;
+
+    }
+
+  }
+
+</style>
